@@ -21,7 +21,8 @@ public class Rocket : MonoBehaviour
             RaycastHit[] allCast = Physics.SphereCastAll(transform.position, exploadRadius, transform.forward, 0.80f);
             foreach (RaycastHit hit in allCast)
             {
-                Debug.Log(hit.collider.gameObject.name);
+                Enemy target = hit.transform.GetComponent<Enemy>();
+                if (target != null) target.TakeDamage(100);
             }
             Destroy(gameObject);
         }

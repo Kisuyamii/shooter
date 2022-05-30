@@ -9,6 +9,7 @@ public class RocketLauncherController : MonoBehaviour
     public GameObject shootPos;
 
     bool canShoot;
+    bool reloading;
     Vector3 startPos;
     private WeaponManager ammoInv;
 
@@ -52,10 +53,22 @@ public class RocketLauncherController : MonoBehaviour
     IEnumerator Reload()
     {
         yield return new WaitForSeconds(0.2f);
+        reloading = true;
         startPos += new Vector3(0,-1,0);
         yield return new WaitForSeconds(1f);
         startPos += new Vector3(0,1,0);
         rocket.SetActive(true);
         canShoot = true;
+        reloading = false;
+    }
+
+    public bool GetShootingState()
+    {
+        return canShoot;
+    }
+    
+    public bool GetReloadingState()
+    {
+        return reloading;
     }
 }

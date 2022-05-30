@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rocketSpeed: 10
+  exploadRadius: 2
 --- !u!65 &1132426789448598498
 BoxCollider:
   m_ObjectHideFlags: 0

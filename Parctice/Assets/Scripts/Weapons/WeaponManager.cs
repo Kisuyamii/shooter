@@ -33,11 +33,19 @@ public class WeaponManager : MonoBehaviour
     {
         if (weapons[currentWeapon].GetComponent<WeaponController>())
         {
-            if (!weapons[currentWeapon].GetComponent<WeaponController>().GetReloadingState() && weapons[currentWeapon].GetComponent<WeaponController>().GetShootingState()) 
+            WeaponController curWeap = weapons[currentWeapon].GetComponent<WeaponController>();
+            if (!curWeap.GetReloadingState() && curWeap.GetShootingState()) 
             {
                 SwitchWeapon(number);
             }
-        } else 
+        }else if (weapons[currentWeapon].GetComponent<RocketLauncherController>())
+        {
+            RocketLauncherController curWeap = weapons[currentWeapon].GetComponent<RocketLauncherController>();
+            if (!curWeap.GetReloadingState() && curWeap.GetShootingState()) 
+            {
+                SwitchWeapon(number);
+            }
+        }else 
         {
             SwitchWeapon(number);
         }
